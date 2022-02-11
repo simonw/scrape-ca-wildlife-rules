@@ -19,7 +19,7 @@ jobs:
         cache: 'pip'
     - name: Install dependencies
       run: |-
-        pip install strip-hidden-form-values
+        pip install -r requirements.txt
     - name: Fetch latest data
       run: |-
         curl https://wildlife.ca.gov/Fishing/Ocean/Regulations/Sport-Fishing/Invertebrate-Fishing-Regs \
