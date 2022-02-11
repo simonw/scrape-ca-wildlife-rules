@@ -15,6 +15,8 @@ jobs:
     - name: Fetch latest data
       run: |-
         curl https://wildlife.ca.gov/Fishing/Ocean/Regulations/Sport-Fishing/Invertebrate-Fishing-Regs > Invertebrate-Fishing-Regs.html
+        curl https://wildlife.ca.gov/Fishing/Ocean/Regulations/Sport-Fishing/Marine-Plants > Marine-Plants.html
+        curl https://wildlife.ca.gov/Fishing/Ocean/Regulations/Sport-Fishing/General-Ocean-Fishing-Regs > General-Ocean-Fishing-Regs.html
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
