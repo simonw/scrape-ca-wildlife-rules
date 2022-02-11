@@ -1,1 +1,1 @@
-strip-hidden-form-values
+strip-hidden-form-values>=0.2
