@@ -12,11 +12,22 @@ jobs:
     steps:
     - name: Check out this repo
       uses: actions/checkout@v2
+    - name: Setup Python with pip cache
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+        cache: 'pip'
+    - name: Install dependencies
+      run: |-
+        pip install strip-hidden-form-values
     - name: Fetch latest data
       run: |-
-        curl https://wildlife.ca.gov/Fishing/Ocean/Regulations/Sport-Fishing/Invertebrate-Fishing-Regs > Invertebrate-Fishing-Regs.html
-        curl https://wildlife.ca.gov/Fishing/Ocean/Regulations/Sport-Fishing/Marine-Plants > Marine-Plants.html
-        curl https://wildlife.ca.gov/Fishing/Ocean/Regulations/Sport-Fishing/General-Ocean-Fishing-Regs > General-Ocean-Fishing-Regs.html
+        curl https://wildlife.ca.gov/Fishing/Ocean/Regulations/Sport-Fishing/Invertebrate-Fishing-Regs \
+          | strip-hidden-form-values > Invertebrate-Fishing-Regs.html
+        curl https://wildlife.ca.gov/Fishing/Ocean/Regulations/Sport-Fishing/Marine-Plants \
+          | strip-hidden-form-values > Marine-Plants.html
+        curl https://wildlife.ca.gov/Fishing/Ocean/Regulations/Sport-Fishing/General-Ocean-Fishing-Regs \
+          | strip-hidden-form-values > General-Ocean-Fishing-Regs.html
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
